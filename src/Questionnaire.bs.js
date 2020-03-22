@@ -6,7 +6,20 @@ var Belt_List = require("bs-platform/lib/js/belt_List.js");
 var Belt_Array = require("bs-platform/lib/js/belt_Array.js");
 var Belt_Option = require("bs-platform/lib/js/belt_Option.js");
 
-function makeQuestion(text, inputType) {
+function inputTypeToHtmlStr(param) {
+  switch (param) {
+    case /* Bool */0 :
+        return "checkbox";
+    case /* Text */1 :
+        return "text";
+    case /* Date */2 :
+        return "date";
+    
+  }
+}
+
+function makeQuestion(text, inputTypeOpt, param) {
+  var inputType = inputTypeOpt !== undefined ? inputTypeOpt : /* Text */1;
   return {
           text: text,
           inputType: inputType
@@ -20,7 +33,8 @@ function makeInput(question) {
   var setValue = match[1];
   var value = match[0];
   var el = React.createElement("div", undefined, React.createElement("label", undefined, question.text), React.createElement("input", {
-            type: "text",
+            className: "input",
+            type: inputTypeToHtmlStr(question.inputType),
             value: Belt_Option.getWithDefault(value, ""),
             onChange: (function (e) {
                 var value = e.currentTarget.value;
@@ -35,144 +49,483 @@ function makeInput(question) {
         ];
 }
 
-var questionsText = /* :: */[
-  "1. What is your best language?",
+var inputType = /* Text */1;
+
+var inputType$1 = /* Text */1;
+
+var inputType$2 = /* Bool */0;
+
+var inputType$3 = /* Text */1;
+
+var inputType$4 = /* Text */1;
+
+var inputType$5 = /* Text */1;
+
+var inputType$6 = /* Text */1;
+
+var inputType$7 = /* Text */1;
+
+var inputType$8 = /* Text */1;
+
+var inputType$9 = /* Text */1;
+
+var inputType$10 = /* Text */1;
+
+var inputType$11 = /* Text */1;
+
+var inputType$12 = /* Text */1;
+
+var inputType$13 = /* Text */1;
+
+var inputType$14 = /* Text */1;
+
+var inputType$15 = /* Text */1;
+
+var inputType$16 = /* Text */1;
+
+var inputType$17 = /* Text */1;
+
+var inputType$18 = /* Text */1;
+
+var inputType$19 = /* Text */1;
+
+var inputType$20 = /* Text */1;
+
+var inputType$21 = /* Text */1;
+
+var inputType$22 = /* Text */1;
+
+var inputType$23 = /* Text */1;
+
+var inputType$24 = /* Text */1;
+
+var inputType$25 = /* Text */1;
+
+var inputType$26 = /* Text */1;
+
+var inputType$27 = /* Text */1;
+
+var inputType$28 = /* Text */1;
+
+var inputType$29 = /* Text */1;
+
+var inputType$30 = /* Text */1;
+
+var inputType$31 = /* Text */1;
+
+var inputType$32 = /* Text */1;
+
+var inputType$33 = /* Text */1;
+
+var inputType$34 = /* Text */1;
+
+var inputType$35 = /* Text */1;
+
+var inputType$36 = /* Text */1;
+
+var inputType$37 = /* Text */1;
+
+var inputType$38 = /* Text */1;
+
+var inputType$39 = /* Text */1;
+
+var inputType$40 = /* Text */1;
+
+var inputType$41 = /* Text */1;
+
+var inputType$42 = /* Text */1;
+
+var inputType$43 = /* Text */1;
+
+var inputType$44 = /* Text */1;
+
+var inputType$45 = /* Text */1;
+
+var inputType$46 = /* Text */1;
+
+var inputType$47 = /* Text */1;
+
+var inputType$48 = /* Text */1;
+
+var inputType$49 = /* Text */1;
+
+var inputType$50 = /* Text */1;
+
+var inputType$51 = /* Text */1;
+
+var inputType$52 = /* Text */1;
+
+var inputType$53 = /* Text */1;
+
+var inputType$54 = /* Text */1;
+
+var inputType$55 = /* Text */1;
+
+var inputType$56 = /* Text */1;
+
+var inputType$57 = /* Text */1;
+
+var inputType$58 = /* Text */1;
+
+var inputType$59 = /* Text */1;
+
+var inputType$60 = /* Text */1;
+
+var inputType$61 = /* Text */1;
+
+var inputType$62 = /* Text */1;
+
+var inputType$63 = /* Text */1;
+
+var inputType$64 = /* Text */1;
+
+var inputType$65 = /* Text */1;
+
+var inputType$66 = /* Text */1;
+
+var inputType$67 = /* Text */1;
+
+var generalIntakeQuestions_000 = {
+  text: "1. What is your best language?",
+  inputType: inputType
+};
+
+var generalIntakeQuestions_001 = /* :: */[
+  {
+    text: "2. Do you speak any other languages?",
+    inputType: inputType$1
+  },
   /* :: */[
-    "2. Do you speak any other languages?",
+    {
+      text: "3. Do you need an interpreter? Y/N",
+      inputType: inputType$2
+    },
     /* :: */[
-      "3. Do you need an interpreter? Y/N",
+      {
+        text: "4. What is your full legal name?",
+        inputType: inputType$3
+      },
       /* :: */[
-        "4. What is your full legal name?",
+        {
+          text: "5. What name do you prefer that people use with you? ",
+          inputType: inputType$4
+        },
         /* :: */[
-          "5. What name do you prefer that people use with you? ",
+          {
+            text: "6. What is your address?",
+            inputType: inputType$5
+          },
           /* :: */[
-            "6. What is your address?",
+            {
+              text: "7. What is the best way to reach you?",
+              inputType: inputType$6
+            },
             /* :: */[
-              "7. What is the best way to reach you?",
+              {
+                text: "    a. What is your phone number?",
+                inputType: inputType$7
+              },
               /* :: */[
-                "    a. What is your phone number?",
+                {
+                  text: "        i. Safe to call?",
+                  inputType: inputType$8
+                },
                 /* :: */[
-                  "        i. Safe to call?",
+                  {
+                    text: "        ii. Prefer text or call?",
+                    inputType: inputType$9
+                  },
                   /* :: */[
-                    "        ii. Prefer text or call?",
+                    {
+                      text: "    b. What is your email address?",
+                      inputType: inputType$10
+                    },
                     /* :: */[
-                      "    b. What is your email address?",
+                      {
+                        text: "    c. Do you regularly check your e-mail?",
+                        inputType: inputType$11
+                      },
                       /* :: */[
-                        "    c. Do you regularly check your e-mail?",
+                        {
+                          text: "8. Where were you born (city/country)?",
+                          inputType: inputType$12
+                        },
                         /* :: */[
-                          "8. Where were you born (city/country)?",
+                          {
+                            text: "9. What is your DOB?",
+                            inputType: inputType$13
+                          },
                           /* :: */[
-                            "9. What is your DOB?",
+                            {
+                              text: "10. Are you in possession of your birth certificate?",
+                              inputType: inputType$14
+                            },
                             /* :: */[
-                              "10. Are you in possession of your birth certificate?",
+                              {
+                                text: "11. Do you have a current/valid passport?",
+                                inputType: inputType$15
+                              },
                               /* :: */[
-                                "11. Do you have a current/valid passport?",
+                                {
+                                  text: "12. When did you last enter the US?",
+                                  inputType: inputType$16
+                                },
                                 /* :: */[
-                                  "12. When did you last enter the US?",
+                                  {
+                                    text: "    a. If before Jan. 1, 1972 - eligible for registry?",
+                                    inputType: inputType$17
+                                  },
                                   /* :: */[
-                                    "    a. If before Jan. 1, 1972 - eligible for registry?",
+                                    {
+                                      text: "13. How did you enter?",
+                                      inputType: inputType$18
+                                    },
                                     /* :: */[
-                                      "13. How did you enter?",
+                                      {
+                                        text: "14. Had you ever been to the US before?",
+                                        inputType: inputType$19
+                                      },
                                       /* :: */[
-                                        "14. Had you ever been to the US before?",
+                                        {
+                                          text: "    a. When / entry / how long?",
+                                          inputType: inputType$20
+                                        },
                                         /* :: */[
-                                          "    a. When / entry / how long?",
+                                          {
+                                            text: "15. Have you ever been caught at the border by immigration officials?",
+                                            inputType: inputType$21
+                                          },
                                           /* :: */[
-                                            "15. Have you ever been caught at the border by immigration officials?",
+                                            {
+                                              text: "16. Have you ever been before an immigration judge?",
+                                              inputType: inputType$22
+                                            },
                                             /* :: */[
-                                              "16. Have you ever been before an immigration judge?",
+                                              {
+                                                text: "17. Current immigration status?",
+                                                inputType: inputType$23
+                                              },
                                               /* :: */[
-                                                "17. Current immigration status?",
+                                                {
+                                                  text: "18. A number, if any?",
+                                                  inputType: inputType$24
+                                                },
                                                 /* :: */[
-                                                  "18. A number, if any?",
+                                                  {
+                                                    text: "19. SSN, if any?",
+                                                    inputType: inputType$25
+                                                  },
                                                   /* :: */[
-                                                    "19. SSN, if any?",
+                                                    {
+                                                      text: "    a. Is your SS card restricted by work authorization?",
+                                                      inputType: inputType$26
+                                                    },
                                                     /* :: */[
-                                                      "    a. Is your SS card restricted by work authorization?",
+                                                      {
+                                                        text: "20. Marital status? (single / married / unmarried partner / divorced /->makeQuestion(()),\nseparated / other)",
+                                                        inputType: inputType$27
+                                                      },
                                                       /* :: */[
-                                                        "20. Marital status? (single / married / unmarried partner / divorced /,\nseparated / other)",
+                                                        {
+                                                          text: "    a. If married / divorced / separated - what is your spouse\xe2\x80\x99s immigration->makeQuestion(()),\nstatus?",
+                                                          inputType: inputType$28
+                                                        },
                                                         /* :: */[
-                                                          "    a. If married / divorced / separated - what is your spouse\xe2\x80\x99s immigration,\nstatus?",
+                                                          {
+                                                            text: "    b. If divorced, how long divorced?",
+                                                            inputType: inputType$29
+                                                          },
                                                           /* :: */[
-                                                            "    b. If divorced, how long divorced?",
+                                                            {
+                                                              text: "21. How many people live with you?",
+                                                              inputType: inputType$30
+                                                            },
                                                             /* :: */[
-                                                              "21. How many people live with you?",
+                                                              {
+                                                                text: "    a. Who?",
+                                                                inputType: inputType$31
+                                                              },
                                                               /* :: */[
-                                                                "    a. Who?",
+                                                                {
+                                                                  text: "22. What is your income?",
+                                                                  inputType: inputType$32
+                                                                },
                                                                 /* :: */[
-                                                                  "22. What is your income?",
+                                                                  {
+                                                                    text: "23. Who do you live with? ",
+                                                                    inputType: inputType$33
+                                                                  },
                                                                   /* :: */[
-                                                                    "23. Who do you live with? ",
+                                                                    {
+                                                                      text: "24. How do you support yourself? ",
+                                                                      inputType: inputType$34
+                                                                    },
                                                                     /* :: */[
-                                                                      "24. How do you support yourself? ",
+                                                                      {
+                                                                        text: "    a. What is your annual income?",
+                                                                        inputType: inputType$35
+                                                                      },
                                                                       /* :: */[
-                                                                        "    a. What is your annual income?",
+                                                                        {
+                                                                          text: "    b. Source of income?",
+                                                                          inputType: inputType$36
+                                                                        },
                                                                         /* :: */[
-                                                                          "    b. Source of income?",
+                                                                          {
+                                                                            text: "25. Household income? (household as defined by HRA/IRS)",
+                                                                            inputType: inputType$37
+                                                                          },
                                                                           /* :: */[
-                                                                            "25. Household income? (household as defined by HRA/IRS)",
+                                                                            {
+                                                                              text: "    a. [For staff: calculate - is this income below 125% of the FPL?]",
+                                                                              inputType: inputType$38
+                                                                            },
                                                                             /* :: */[
-                                                                              "    a. [For staff: calculate - is this income below 125% of the FPL?]",
+                                                                              {
+                                                                                text: "26. Any family members in the United States?",
+                                                                                inputType: inputType$39
+                                                                              },
                                                                               /* :: */[
-                                                                                "26. Any family members in the United States?",
+                                                                                {
+                                                                                  text: "27. What is your mother\xe2\x80\x99s name? Living/deceased? Where does she live?->makeQuestion(()),\nImmigration status?",
+                                                                                  inputType: inputType$40
+                                                                                },
                                                                                 /* :: */[
-                                                                                  "27. What is your mother\xe2\x80\x99s name? Living/deceased? Where does she live?,\nImmigration status?",
+                                                                                  {
+                                                                                    text: "28. Father\xe2\x80\x99s name? Living/deceased? Where does he live? Immigration status?",
+                                                                                    inputType: inputType$41
+                                                                                  },
                                                                                   /* :: */[
-                                                                                    "28. Father\xe2\x80\x99s name? Living/deceased? Where does he live? Immigration status?",
+                                                                                    {
+                                                                                      text: "29. Were your parents married when you were born? ",
+                                                                                      inputType: inputType$42
+                                                                                    },
                                                                                     /* :: */[
-                                                                                      "29. Were your parents married when you were born? ",
+                                                                                      {
+                                                                                        text: "30.  Any other family members (parents, grandparents, spouse, siblings,->makeQuestion(()),\nchildren) who have US citizenship or permanent residence?",
+                                                                                        inputType: inputType$43
+                                                                                      },
                                                                                       /* :: */[
-                                                                                        "30.  Any other family members (parents, grandparents, spouse, siblings,,\nchildren) who have US citizenship or permanent residence?",
+                                                                                        {
+                                                                                          text: "31. Do you have any children?",
+                                                                                          inputType: inputType$44
+                                                                                        },
                                                                                         /* :: */[
-                                                                                          "31. Do you have any children?",
+                                                                                          {
+                                                                                            text: "    a. List names, DOBs, immigration status of children",
+                                                                                            inputType: inputType$45
+                                                                                          },
                                                                                           /* :: */[
-                                                                                            "    a. List names, DOBs, immigration status of children",
+                                                                                            {
+                                                                                              text: "32. What is your gender? ",
+                                                                                              inputType: inputType$46
+                                                                                            },
                                                                                             /* :: */[
-                                                                                              "32. What is your gender? ",
+                                                                                              {
+                                                                                                text: "    a. What pronouns do you use?",
+                                                                                                inputType: inputType$47
+                                                                                              },
                                                                                               /* :: */[
-                                                                                                "    a. What pronouns do you use?",
+                                                                                                {
+                                                                                                  text: "33. Do you use any social media accounts? Which ones?",
+                                                                                                  inputType: inputType$48
+                                                                                                },
                                                                                                 /* :: */[
-                                                                                                  "33. Do you use any social media accounts? Which ones?",
+                                                                                                  {
+                                                                                                    text: "    a. [Advise that we will screen for public posts that DHS might find issue->makeQuestion(()),\nwith]",
+                                                                                                    inputType: inputType$49
+                                                                                                  },
                                                                                                   /* :: */[
-                                                                                                    "    a. [Advise that we will screen for public posts that DHS might find issue,\nwith]",
+                                                                                                    {
+                                                                                                      text: "34. Do you belong to any religion? What? ",
+                                                                                                      inputType: inputType$50
+                                                                                                    },
                                                                                                     /* :: */[
-                                                                                                      "34. Do you belong to any religion? What? ",
+                                                                                                      {
+                                                                                                        text: "    a. How active are you? Are you a member of a church/synagogue/temple/faith->makeQuestion(()),\ncommunity?",
+                                                                                                        inputType: inputType$51
+                                                                                                      },
                                                                                                       /* :: */[
-                                                                                                        "    a. How active are you? Are you a member of a church/synagogue/temple/faith,\ncommunity?",
+                                                                                                        {
+                                                                                                          text: "    b. Do you give money to them? ",
+                                                                                                          inputType: inputType$52
+                                                                                                        },
                                                                                                         /* :: */[
-                                                                                                          "    b. Do you give money to them? ",
+                                                                                                          {
+                                                                                                            text: "35. Do you, or have you in the past, been a member of a political party?",
+                                                                                                            inputType: inputType$53
+                                                                                                          },
                                                                                                           /* :: */[
-                                                                                                            "35. Do you, or have you in the past, been a member of a political party?",
+                                                                                                            {
+                                                                                                              text: "    a. Which one(s)?",
+                                                                                                              inputType: inputType$54
+                                                                                                            },
                                                                                                             /* :: */[
-                                                                                                              "    a. Which one(s)?",
+                                                                                                              {
+                                                                                                                text: "    b. Were you politically active? How so? ",
+                                                                                                                inputType: inputType$55
+                                                                                                              },
                                                                                                               /* :: */[
-                                                                                                                "    b. Were you politically active? How so? ",
+                                                                                                                {
+                                                                                                                  text: "36. Physical health:",
+                                                                                                                  inputType: inputType$56
+                                                                                                                },
                                                                                                                 /* :: */[
-                                                                                                                  "36. Physical health:",
+                                                                                                                  {
+                                                                                                                    text: "    a. Do you have any chronic diseases or health conditions?",
+                                                                                                                    inputType: inputType$57
+                                                                                                                  },
                                                                                                                   /* :: */[
-                                                                                                                    "    a. Do you have any chronic diseases or health conditions?",
+                                                                                                                    {
+                                                                                                                      text: "    b. Are you being treated for any medical conditions right now? ",
+                                                                                                                      inputType: inputType$58
+                                                                                                                    },
                                                                                                                     /* :: */[
-                                                                                                                      "    b. Are you being treated for any medical conditions right now? ",
+                                                                                                                      {
+                                                                                                                        text: "    c. Do you take any prescription medication? ",
+                                                                                                                        inputType: inputType$59
+                                                                                                                      },
                                                                                                                       /* :: */[
-                                                                                                                        "    c. Do you take any prescription medication? ",
+                                                                                                                        {
+                                                                                                                          text: "    d. Have you ever been hospitalized? For what? ",
+                                                                                                                          inputType: inputType$60
+                                                                                                                        },
                                                                                                                         /* :: */[
-                                                                                                                          "    d. Have you ever been hospitalized? For what? ",
+                                                                                                                          {
+                                                                                                                            text: "    e. Have you ever had to have any surgery? ",
+                                                                                                                            inputType: inputType$61
+                                                                                                                          },
                                                                                                                           /* :: */[
-                                                                                                                            "    e. Have you ever had to have any surgery? ",
+                                                                                                                            {
+                                                                                                                              text: "    f. Have you ever been hurt injured by another person? By who? Did you have->makeQuestion(()),\nto receive medical treatment? ",
+                                                                                                                              inputType: inputType$62
+                                                                                                                            },
                                                                                                                             /* :: */[
-                                                                                                                              "    f. Have you ever been hurt injured by another person? By who? Did you have,\nto receive medical treatment? ",
+                                                                                                                              {
+                                                                                                                                text: "37. Mental health",
+                                                                                                                                inputType: inputType$63
+                                                                                                                              },
                                                                                                                               /* :: */[
-                                                                                                                                "37. Mental health",
+                                                                                                                                {
+                                                                                                                                  text: "    a. Have you ever seen a therapist or psychiatrist?",
+                                                                                                                                  inputType: inputType$64
+                                                                                                                                },
                                                                                                                                 /* :: */[
-                                                                                                                                  "    a. Have you ever seen a therapist or psychiatrist?",
+                                                                                                                                  {
+                                                                                                                                    text: "    b. Have you ever been diagnosed with a mental health condition - anxiety,->makeQuestion(()),\ndepression, schizophrenia, bipolar, borderline personality, or anything else? ",
+                                                                                                                                    inputType: inputType$65
+                                                                                                                                  },
                                                                                                                                   /* :: */[
-                                                                                                                                    "    b. Have you ever been diagnosed with a mental health condition - anxiety,,\ndepression, schizophrenia, bipolar, borderline personality, or anything else? ",
+                                                                                                                                    {
+                                                                                                                                      text: "        i. If yes, when? ",
+                                                                                                                                      inputType: inputType$66
+                                                                                                                                    },
                                                                                                                                     /* :: */[
-                                                                                                                                      "        i. If yes, when? ",
-                                                                                                                                      /* :: */[
-                                                                                                                                        "        ii. Did you receive treatment? What kind? ",
-                                                                                                                                        /* [] */0
-                                                                                                                                      ]
+                                                                                                                                      {
+                                                                                                                                        text: "        ii. Did you receive treatment? What kind? ",
+                                                                                                                                        inputType: inputType$67
+                                                                                                                                      },
+                                                                                                                                      /* [] */0
                                                                                                                                     ]
                                                                                                                                   ]
                                                                                                                                 ]
@@ -241,13 +594,13 @@ var questionsText = /* :: */[
   ]
 ];
 
+var generalIntakeQuestions = /* :: */[
+  generalIntakeQuestions_000,
+  generalIntakeQuestions_001
+];
+
 function Questionnaire(Props) {
-  var match = Belt_Array.unzip(Belt_List.toArray(Belt_List.map(Belt_List.map(questionsText, (function (qtext) {
-                      return {
-                              text: qtext,
-                              inputType: /* Text */1
-                            };
-                    })), makeInput)));
+  var match = Belt_Array.unzip(Belt_List.toArray(Belt_List.map(generalIntakeQuestions, makeInput)));
   var questionValues = match[1];
   return React.createElement(React.Fragment, undefined, React.createElement("div", undefined, match[0]), React.createElement("button", {
                   onClick: (function (param) {
@@ -262,8 +615,9 @@ var RR = /* alias */0;
 var make = Questionnaire;
 
 exports.RR = RR;
+exports.inputTypeToHtmlStr = inputTypeToHtmlStr;
 exports.makeQuestion = makeQuestion;
 exports.makeInput = makeInput;
-exports.questionsText = questionsText;
+exports.generalIntakeQuestions = generalIntakeQuestions;
 exports.make = make;
 /* react Not a pure module */

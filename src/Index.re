@@ -27,5 +27,4 @@ let makeContainer = text => {
   content;
 };
 
-// All 4 examples.
 ReactDOMRe.render(<Questionnaire />, makeContainer("Questionnaire"));
